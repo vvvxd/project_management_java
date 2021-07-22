@@ -8,14 +8,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class ProjectsResponseDto {
 
     @Schema(description = "Название проекта")
-    private String Project_name;
-
+    private String projectName;
     @Schema(description = "Статус проекта")
     private ProjectStatus status;
 
-    public ProjectsResponseDto(String project_name, ProjectStatus status) {
-        Project_name = project_name;
-        this.status = status;
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public ProjectStatus getStatus() {
@@ -26,15 +29,8 @@ public class ProjectsResponseDto {
         this.status = status;
     }
 
-    public String getProject_name() {
-        return Project_name;
-    }
-
-    public void setProject_name(String project_name) {
-        Project_name = project_name;
-    }
-
-    public ProjectsResponseDto(String project_name) {
-        Project_name = project_name;
+    public ProjectsResponseDto(String projectName, ProjectStatus status) {
+        this.projectName = projectName;
+        this.status = status;
     }
 }

@@ -21,9 +21,9 @@ public class RolesController {
     @GetMapping(value = "/role")
     public ResponseEntity<List<RolesResponseDto>> getRoles() {
         List<RolesResponseDto> results = new ArrayList<>();
-        results.add( new RolesResponseDto("Admin"));
-        results.add(  new RolesResponseDto("User"));
-        results.add(  new RolesResponseDto("SuperUser"));
+        results.add(new RolesResponseDto("Admin"));
+        results.add(new RolesResponseDto("User"));
+        results.add(new RolesResponseDto("SuperUser"));
         return ResponseEntity.ok().body(results);
     }
 
@@ -37,6 +37,12 @@ public class RolesController {
     @DeleteMapping(value = "/role/{id}")
     public ResponseEntity deleteRole(@PathVariable Long id) {
         return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "Обновление релиза")
+    @PutMapping(value = "/role/{id}")
+    public ResponseEntity<RolesResponseDto> partialUpdateTask(@PathVariable Long id, @RequestBody RolesRequestDto requestDto) {
+        return ResponseEntity.ok().body(new RolesResponseDto(requestDto.getName()));
     }
 
     @ExceptionHandler(IOException.class)

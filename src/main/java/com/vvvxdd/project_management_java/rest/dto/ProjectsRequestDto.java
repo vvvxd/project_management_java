@@ -6,17 +6,26 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "Проект")
 public class ProjectsRequestDto {
     @Schema(description = "Проект ID")
-    private long Project_id;
+    private long projectId;
     @Schema(description = "Название проекта")
-    private String Project_name;
-
+    private String projectName;
     @Schema(description = "Статус проекта")
     private ProjectStatus status;
 
-    public ProjectsRequestDto(long project_id, String project_name, ProjectStatus status) {
-        Project_id = project_id;
-        Project_name = project_name;
-        this.status = status;
+    public long getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(long projectId) {
+        this.projectId = projectId;
+    }
+
+    public String getProjectName() {
+        return projectName;
+    }
+
+    public void setProjectName(String projectName) {
+        this.projectName = projectName;
     }
 
     public ProjectStatus getStatus() {
@@ -27,20 +36,9 @@ public class ProjectsRequestDto {
         this.status = status;
     }
 
-    public long getProject_id() {
-        return Project_id;
+    public ProjectsRequestDto(long projectId, String projectName, ProjectStatus status) {
+        this.projectId = projectId;
+        this.projectName = projectName;
+        this.status = status;
     }
-
-    public void setProject_id(long project_id) {
-        Project_id = project_id;
-    }
-
-    public String getProject_name() {
-        return Project_name;
-    }
-
-    public void setProject_name(String project_name) {
-        Project_name = project_name;
-    }
-
 }

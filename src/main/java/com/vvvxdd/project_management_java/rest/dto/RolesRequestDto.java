@@ -6,17 +6,17 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class RolesRequestDto {
 
     @Schema(description = "ID роли")
-    private long Role_id;
+    private long roleId;
 
     @Schema(description = "Название роли")
     private String Name;
 
-    public long getRole_id() {
-        return Role_id;
+    public long getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(long role_id) {
-        Role_id = role_id;
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
     public String getName() {
@@ -27,8 +27,8 @@ public class RolesRequestDto {
         Name = name;
     }
 
-    public RolesRequestDto(long role_id, String name) {
-        Role_id = role_id;
+    public RolesRequestDto(long roleId, String name) {
+        this.roleId = roleId;
         Name = name;
     }
 }

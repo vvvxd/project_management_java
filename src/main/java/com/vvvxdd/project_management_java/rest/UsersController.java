@@ -22,22 +22,28 @@ public class UsersController {
     @GetMapping(value = "/users")
     public ResponseEntity<List<UsersResponseDto>> getUsers() {
         List<UsersResponseDto> results = new ArrayList<>();
-        results.add( new UsersResponseDto(1,"Иванов","Иван","Иванович",1));
-        results.add( new UsersResponseDto(2,"Иванов","Иван","Иванович",1));
-        results.add( new UsersResponseDto(3,"Иванов","Иван","Иванович",1));
+        results.add(new UsersResponseDto(1, "Иванов", "Иван", "Иванович", 1));
+        results.add(new UsersResponseDto(2, "Иванов", "Иван", "Иванович", 1));
+        results.add(new UsersResponseDto(3, "Иванов", "Иван", "Иванович", 1));
         return ResponseEntity.ok().body(results);
     }
 
     @Operation(summary = "Добавить пользователя")
     @PostMapping(value = "/user")
     public ResponseEntity<UsersResponseDto> createUsers(@RequestBody UsersRequestDto requestDto) {
-        return ResponseEntity.ok().body(new UsersResponseDto(requestDto.getRole_id(),requestDto.getLast_name(),requestDto.getFirst_name(),requestDto.getMiddle_name(),requestDto.getProject_id()));
+        return ResponseEntity.ok().body(new UsersResponseDto(requestDto.getRoleId(), requestDto.getLastName(), requestDto.getFirstMame(), requestDto.getMiddleName(), requestDto.getProjectId()));
     }
 
     @Operation(summary = "Удаление пользователя")
     @DeleteMapping(value = "/user/{id}")
     public ResponseEntity deleteUsers(@PathVariable Long id) {
         return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "Обновление пользователя")
+    @PutMapping(value = "/user/{id}")
+    public ResponseEntity<UsersResponseDto> partialUpdateTask(@PathVariable Long id, @RequestBody UsersRequestDto requestDto) {
+        return ResponseEntity.ok().body(new UsersResponseDto(requestDto.getRoleId(), requestDto.getLastName(), requestDto.getFirstMame(), requestDto.getMiddleName(), requestDto.getProjectId()));
     }
 
     @ExceptionHandler(IOException.class)

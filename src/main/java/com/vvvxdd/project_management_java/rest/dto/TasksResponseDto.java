@@ -9,62 +9,62 @@ import io.swagger.v3.oas.annotations.media.Schema;
 public class TasksResponseDto {
 
     @Schema(description = "ID релиза")
-    private long Release_id;
+    private long releaseId;
     @Schema(description = "Статус задачи")
-    private TaskStatus Status;
+    private TaskStatus status;
     @Schema(description = "ID проекта")
-    private long Project_id;
+    private long projectId;
     @Schema(description = "ID исполнителя")
-    private long Executor_id;
+    private long executorId;
     @Schema(description = "ID заказчика")
-    private long Customer_id;
+    private long customerId;
 
-    public long getRelease_id() {
-        return Release_id;
+    public long getReleaseId() {
+        return releaseId;
     }
 
-    public void setRelease_id(long release_id) {
-        Release_id = release_id;
+    public void setReleaseId(long releaseId) {
+        this.releaseId = releaseId;
     }
 
     public TaskStatus getStatus() {
-        return Status;
+        return status;
     }
 
     public void setStatus(TaskStatus status) {
-        Status = status;
+        this.status = status;
     }
 
-    public long getProject_id() {
-        return Project_id;
+    public long getProjectId() {
+        return projectId;
     }
 
-    public void setProject_id(long project_id) {
-        Project_id = project_id;
+    public void setProjectId(long projectId) {
+        this.projectId = projectId;
     }
 
-    public long getExecutor_id() {
-        return Executor_id;
+    public long getExecutorId() {
+        return executorId;
     }
 
-    public void setExecutor_id(long executor_id) {
-        Executor_id = executor_id;
+    public void setExecutorId(long executorId) {
+        this.executorId = executorId;
     }
 
-    public long getCustomer_id() {
-        return Customer_id;
+    public long getCustomerId() {
+        return customerId;
     }
 
-    public void setCustomer_id(long customer_id) {
-        Customer_id = customer_id;
+    public void setCustomerId(long customerId) {
+        this.customerId = customerId;
     }
 
-    public TasksResponseDto( long release_id, TaskStatus status, long project_id, long executor_id, long customer_id) {
-        Release_id = release_id;
-        Status = status;
-        Project_id = project_id;
-        Executor_id = executor_id;
-        Customer_id = customer_id;
+    public TasksResponseDto(long releaseId, TaskStatus status, long projectId, long executorId, long customerId) {
+        this.releaseId = releaseId;
+        this.status = status;
+        this.projectId = projectId;
+        this.executorId = executorId;
+        this.customerId = customerId;
     }
 }
 

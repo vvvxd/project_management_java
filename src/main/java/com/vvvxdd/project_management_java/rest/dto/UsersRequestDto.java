@@ -5,74 +5,72 @@ import io.swagger.v3.oas.annotations.media.Schema;
 @Schema(description = "Пользователи")
 public class UsersRequestDto {
     @Schema(description = "ID пользователя")
-    private long Users_id;
+    private long usersId;
     @Schema(description = "ID роли")
-    private long Role_id;
+    private long roleId;
     @Schema(description = "Фамилия")
-    private String last_name;
+    private String lastName;
     @Schema(description = "Имя")
-    private String first_name;
+    private String firstMame;
     @Schema(description = "Отчество")
-    private String middle_name;
+    private String middleName;
     @Schema(description = "ID проекта")
-    private long Project_id;
+    private long projectId;
 
-    public long getUsers_id() {
-        return Users_id;
+    public long getUsersId() {
+        return usersId;
     }
 
-    public void setUsers_id(long users_id) {
-        Users_id = users_id;
+    public void setUsersId(long usersId) {
+        this.usersId = usersId;
     }
 
-    public long getRole_id() {
-        return Role_id;
+    public long getRoleId() {
+        return roleId;
     }
 
-    public void setRole_id(long role_id) {
-        Role_id = role_id;
+    public void setRoleId(long roleId) {
+        this.roleId = roleId;
     }
 
-    public String getLast_name() {
-        return last_name;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setLast_name(String last_name) {
-        this.last_name = last_name;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getFirstMame() {
+        return firstMame;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setFirstMame(String firstMame) {
+        this.firstMame = firstMame;
     }
 
-    public String getMiddle_name() {
-        return middle_name;
+    public String getMiddleName() {
+        return middleName;
     }
 
-    public void setMiddle_name(String middle_name) {
-        this.middle_name = middle_name;
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
     }
 
-    public long getProject_id() {
-        return Project_id;
+    public long getProjectId() {
+        return projectId;
     }
 
-    public void setProject_id(long project_id) {
-        Project_id = project_id;
+    public void setProjectId(long projectId) {
+        this.projectId = projectId;
     }
 
-    public UsersRequestDto(long users_id, long role_id, String last_name, String first_name, String middle_name, long project_id) {
-        Users_id = users_id;
-        Role_id = role_id;
-        this.last_name = last_name;
-        this.first_name = first_name;
-        this.middle_name = middle_name;
-        Project_id = project_id;
+    public UsersRequestDto(long usersId, long roleId, String lastName, String firstMame, String middleName, long projectId) {
+        this.usersId = usersId;
+        this.roleId = roleId;
+        this.lastName = lastName;
+        this.firstMame = firstMame;
+        this.middleName = middleName;
+        this.projectId = projectId;
     }
-
-
 }

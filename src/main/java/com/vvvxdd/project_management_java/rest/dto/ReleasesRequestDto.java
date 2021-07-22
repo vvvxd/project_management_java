@@ -8,41 +8,41 @@ import java.util.Date;
 public class ReleasesRequestDto {
 
     @Schema(description = "Релиз ID")
-    private long Release_id;
+    private long releaseId;
 
     @Schema(description = "Начало релизы")
-    private Date Start_time;
+    private Date startTime;
 
     @Schema(description = "Конец релизы")
-    private Date Completion_time;
+    private Date completionTime;
 
-    public long getRelease_id() {
-        return Release_id;
+    public long getReleaseId() {
+        return releaseId;
     }
 
-    public void setRelease_id(long release_id) {
-        Release_id = release_id;
+    public void setReleaseId(long releaseId) {
+        this.releaseId = releaseId;
     }
 
-    public Date getStart_time() {
-        return Start_time;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setStart_time(Date start_time) {
-        Start_time = start_time;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getCompletion_time() {
-        return Completion_time;
+    public Date getCompletionTime() {
+        return completionTime;
     }
 
-    public void setCompletion_time(Date completion_time) {
-        Completion_time = completion_time;
+    public void setCompletionTime(Date completionTime) {
+        this.completionTime = completionTime;
     }
 
-    public ReleasesRequestDto(long release_id, Date start_time, Date completion_time) {
-        Release_id = release_id;
-        Start_time = start_time;
-        Completion_time = completion_time;
+    public ReleasesRequestDto(long releaseId, Date startTime, Date completionTime) {
+        this.releaseId = releaseId;
+        this.startTime = startTime;
+        this.completionTime = completionTime;
     }
 }

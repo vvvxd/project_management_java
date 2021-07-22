@@ -1,8 +1,5 @@
 package com.vvvxdd.project_management_java.rest;
 
-import com.vvvxdd.project_management_java.config.ProjectStatus;
-import com.vvvxdd.project_management_java.rest.dto.ProjectsRequestDto;
-import com.vvvxdd.project_management_java.rest.dto.ProjectsResponseDto;
 import com.vvvxdd.project_management_java.rest.dto.ReleasesRequestDto;
 import com.vvvxdd.project_management_java.rest.dto.ReleasesResponseDto;
 import io.swagger.v3.oas.annotations.Operation;
@@ -25,22 +22,28 @@ public class ReleasesController {
     @GetMapping(value = "/releases")
     public ResponseEntity<List<ReleasesResponseDto>> getReleases() {
         List<ReleasesResponseDto> results = new ArrayList<>();
-        results.add( new ReleasesResponseDto(new Date(), new Date()));
-        results.add( new ReleasesResponseDto(new Date(), new Date()));
-        results.add( new ReleasesResponseDto(new Date(), new Date()));
+        results.add(new ReleasesResponseDto(new Date(), new Date()));
+        results.add(new ReleasesResponseDto(new Date(), new Date()));
+        results.add(new ReleasesResponseDto(new Date(), new Date()));
         return ResponseEntity.ok().body(results);
     }
 
     @Operation(summary = "Добавить релиз")
     @PostMapping(value = "/release")
     public ResponseEntity<ReleasesResponseDto> createRelease(@RequestBody ReleasesRequestDto requestDto) {
-        return ResponseEntity.ok().body(new ReleasesResponseDto(requestDto.getStart_time(),requestDto.getCompletion_time()));
+        return ResponseEntity.ok().body(new ReleasesResponseDto(requestDto.getStartTime(), requestDto.getCompletionTime()));
     }
 
     @Operation(summary = "Удаление релиза")
     @DeleteMapping(value = "/release/{id}")
     public ResponseEntity deleteRelease(@PathVariable Long id) {
         return ResponseEntity.ok().build();
+    }
+
+    @Operation(summary = "Обновление релиза")
+    @PutMapping(value = "/release/{id}")
+    public ResponseEntity<ReleasesResponseDto> partialUpdateTask(@PathVariable Long id, @RequestBody ReleasesRequestDto requestDto) {
+        return ResponseEntity.ok().body(new ReleasesResponseDto(requestDto.getStartTime(), requestDto.getCompletionTime()));
     }
 
     @ExceptionHandler(IOException.class)

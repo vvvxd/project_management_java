@@ -10,30 +10,29 @@ public class ReleasesResponseDto {
 
 
     @Schema(description = "Начало релизы")
-    private Date Start_time;
+    private Date startTime;
 
     @Schema(description = "Конец релизы")
-    private Date Completion_time;
+    private Date completionTime;
 
-
-    public Date getStart_time() {
-        return Start_time;
+    public Date getStartTime() {
+        return startTime;
     }
 
-    public void setStart_time(Date start_time) {
-        Start_time = start_time;
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 
-    public Date getCompletion_time() {
-        return Completion_time;
+    public Date getCompletionTime() {
+        return completionTime;
     }
 
-    public void setCompletion_time(Date completion_time) {
-        Completion_time = completion_time;
+    public void setCompletionTime(Date completionTime) {
+        this.completionTime = completionTime;
     }
 
-    public ReleasesResponseDto(Date start_time, Date completion_time) {
-        Start_time = start_time;
-        Completion_time = completion_time;
+    public ReleasesResponseDto(Date startTime, Date completionTime) {
+        this.startTime = startTime;
+        this.completionTime = completionTime;
     }
 }
