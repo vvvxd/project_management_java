@@ -2,6 +2,7 @@ package com.vvvxdd.project_management_java.rest;
 
 import com.vvvxdd.project_management_java.rest.dto.RolesRequestDto;
 import com.vvvxdd.project_management_java.rest.dto.RolesResponseDto;
+import com.vvvxdd.project_management_java.servise.RolesService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -16,14 +17,16 @@ import java.util.List;
 @RequestMapping("/api/roles")
 @RestController
 public class RolesController {
+    private final RolesService rolesService;
+
+    public RolesController(RolesService rolesService) {
+        this.rolesService = rolesService;
+    }
 
     @Operation(summary = "Получить список ролей")
     @GetMapping(value = "/role")
     public ResponseEntity<List<RolesResponseDto>> getRoles() {
-        List<RolesResponseDto> results = new ArrayList<>();
-        results.add(new RolesResponseDto("Admin"));
-        results.add(new RolesResponseDto("User"));
-        results.add(new RolesResponseDto("SuperUser"));
+        List<RolesResponseDto> results = rolesService.getAll();
         return ResponseEntity.ok().body(results);
     }
 

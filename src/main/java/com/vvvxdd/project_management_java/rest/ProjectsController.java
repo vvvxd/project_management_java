@@ -1,8 +1,9 @@
 package com.vvvxdd.project_management_java.rest;
 
-import com.vvvxdd.project_management_java.config.ProjectStatus;
+import com.vvvxdd.project_management_java.rest.dto.ProjectStatus;
 import com.vvvxdd.project_management_java.rest.dto.ProjectsRequestDto;
 import com.vvvxdd.project_management_java.rest.dto.ProjectsResponseDto;
+import com.vvvxdd.project_management_java.servise.ProjectsService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -22,34 +23,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Tag(name = "Проекты")
-@RequestMapping("/api/projects")
+@RequestMapping("/api/project")
 @RestController
 public class ProjectsController {
 
+    final ProjectsService projectsService;
+
+    public ProjectsController(ProjectsService projectsService) {
+        this.projectsService = projectsService;
+    }
+
+
     @Operation(summary = "Получить список проектов")
-    @GetMapping(value = "/project")
+    @GetMapping(value = "/")
     public ResponseEntity<List<ProjectsResponseDto>> getProjects() {
-        List<ProjectsResponseDto> results = new ArrayList<>();
-        results.add(new ProjectsResponseDto("1", ProjectStatus.ACTIVE));
-        results.add(new ProjectsResponseDto("2", ProjectStatus.ACTIVE));
-        results.add(new ProjectsResponseDto("3", ProjectStatus.ACTIVE));
-        return ResponseEntity.ok().body(results);
+        List<ProjectsResponseDto> projectsServiceAll = projectsService.getAll();
+        return ResponseEntity.ok().body(projectsServiceAll);
     }
 
     @Operation(summary = "Добавить проект")
-    @PostMapping(value = "/project")
+    @PostMapping(value = "/")
     public ResponseEntity<ProjectsResponseDto> createProject(@RequestBody ProjectsRequestDto requestDto) {
         return ResponseEntity.ok().body(new ProjectsResponseDto(requestDto.getProjectName(), requestDto.getStatus()));
     }
 
     @Operation(summary = "Удаление проекта")
-    @DeleteMapping(value = "/project/{id}")
+    @DeleteMapping(value = "/{id}")
     public ResponseEntity deleteProject(@PathVariable Long id) {
         return ResponseEntity.ok().build();
     }
 
     @Operation(summary = "Обновление проекта")
-    @PutMapping(value = "/project/{id}")
+    @PutMapping(value = "/{id}")
     public ResponseEntity<ProjectsResponseDto> partialUpdateTask(@PathVariable Long id, @RequestBody ProjectsRequestDto requestDto) {
         return ResponseEntity.ok().body(new ProjectsResponseDto(requestDto.getProjectName(), requestDto.getStatus()));
     }

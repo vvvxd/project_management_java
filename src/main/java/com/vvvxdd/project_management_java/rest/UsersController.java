@@ -2,6 +2,7 @@ package com.vvvxdd.project_management_java.rest;
 
 import com.vvvxdd.project_management_java.rest.dto.UsersRequestDto;
 import com.vvvxdd.project_management_java.rest.dto.UsersResponseDto;
+import com.vvvxdd.project_management_java.servise.UsersService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -17,14 +18,16 @@ import java.util.List;
 @RequestMapping("/api/users")
 @RestController
 public class UsersController {
+    private final UsersService usersService;
+
+    public UsersController(UsersService usersService) {
+        this.usersService = usersService;
+    }
 
     @Operation(summary = "Получить список пользователей")
     @GetMapping(value = "/users")
     public ResponseEntity<List<UsersResponseDto>> getUsers() {
-        List<UsersResponseDto> results = new ArrayList<>();
-        results.add(new UsersResponseDto(1, "Иванов", "Иван", "Иванович", 1));
-        results.add(new UsersResponseDto(2, "Иванов", "Иван", "Иванович", 1));
-        results.add(new UsersResponseDto(3, "Иванов", "Иван", "Иванович", 1));
+        List<UsersResponseDto> results = usersService.getAll();
         return ResponseEntity.ok().body(results);
     }
 
