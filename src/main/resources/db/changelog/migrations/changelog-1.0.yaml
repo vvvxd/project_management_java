@@ -1,0 +1,222 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1628272996198-1
+      author: vvvxdd
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: projects_pk
+                  name: project_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: project_name
+                  type: VARCHAR(40)
+              - column:
+                  name: project_status
+                  type: VARCHAR
+            tableName: projects
+  - changeSet:
+      id: 1628272996198-2
+      author: vvvxdd
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: tasks_pk
+                  name: task_id
+                  type: BIGINT
+              - column:
+                  name: release_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: status
+                  type: VARCHAR(30)
+              - column:
+                  name: project_id
+                  type: BIGINT
+              - column:
+                  name: executor
+                  type: BIGINT
+              - column:
+                  name: customer
+                  type: BIGINT
+            tableName: tasks
+  - changeSet:
+      id: 1628272996198-4
+      author: vvvxdd
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: performers_pk
+                  name: users_id
+                  type: BIGINT
+              - column:
+                  name: role_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: last_name
+                  type: VARCHAR(20)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: first_name
+                  type: VARCHAR(30)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: middle_name
+                  type: VARCHAR(30)
+              - column:
+                  name: project_id
+                  type: BIGINT
+            tableName: users
+  - changeSet:
+      id: 1628272996198-5
+      author: vvvxdd
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: roles_pk
+                  name: role_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: name
+                  type: VARCHAR(30)
+            tableName: roles
+  - changeSet:
+      id: 1628272996198-6
+      author: vvvxdd
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: releases_pk
+                  name: release_id
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: start_time
+                  type: date
+              - column:
+                  constraints:
+                    nullable: false
+                  name: completion_time
+                  type: date
+            tableName: releases
+  - changeSet:
+      id: 1628272996198-7
+      author: vvvxdd
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: project_id
+            baseTableName: tasks
+            constraintName: relation_11
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: project_id
+            referencedTableName: projects
+            validate: true
+  - changeSet:
+      id: 1628272996198-8
+      author: vvvxdd
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: project_id
+            baseTableName: users
+            constraintName: relation_6
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: project_id
+            referencedTableName: projects
+            validate: true
+  - changeSet:
+      id: 1628272996198-9
+      author: vvvxdd
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: executor
+            baseTableName: tasks
+            constraintName: relation_12
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: users_id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1628272996198-10
+      author: vvvxdd
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: customer
+            baseTableName: tasks
+            constraintName: relation_13
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: users_id
+            referencedTableName: users
+            validate: true
+  - changeSet:
+      id: 1628272996198-11
+      author: vvvxdd
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: release_id
+            baseTableName: tasks
+            constraintName: relation_8
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: release_id
+            referencedTableName: releases
+            validate: true
+  - changeSet:
+      id: 1628272996198-12
+      author: vvvxdd
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: role_id
+            baseTableName: users
+            constraintName: relation_5
+            deferrable: false
+            initiallyDeferred: false
+            onDelete: SET NULL
+            onUpdate: NO ACTION
+            referencedColumnNames: role_id
+            referencedTableName: roles
+            validate: true

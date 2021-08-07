@@ -1,8 +1,9 @@
 package com.vvvxdd.project_management_java.rest;
 
-import com.vvvxdd.project_management_java.config.TaskStatus;
+import com.vvvxdd.project_management_java.rest.dto.TaskStatus;
 import com.vvvxdd.project_management_java.rest.dto.TasksRequestDto;
 import com.vvvxdd.project_management_java.rest.dto.TasksResponseDto;
+import com.vvvxdd.project_management_java.servise.TasksService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
@@ -18,14 +19,16 @@ import java.util.List;
 @RequestMapping("/api/tasks")
 @RestController
 public class TasksController {
+    private final TasksService tasksService;
+
+    public TasksController(TasksService tasksService) {
+        this.tasksService = tasksService;
+    }
 
     @Operation(summary = "Получить список задач")
     @GetMapping(value = "/tasks")
     public ResponseEntity<List<TasksResponseDto>> getTasks() {
-        List<TasksResponseDto> results = new ArrayList<>();
-        results.add(new TasksResponseDto(1, TaskStatus.BACKLOG, 2, 2, 2));
-        results.add(new TasksResponseDto(1, TaskStatus.BACKLOG, 2, 2, 2));
-        results.add(new TasksResponseDto(1, TaskStatus.BACKLOG, 2, 2, 2));
+        List<TasksResponseDto> results = tasksService.getAll();
         return ResponseEntity.ok().body(results);
     }
 

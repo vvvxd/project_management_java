@@ -1,6 +1,5 @@
 package com.vvvxdd.project_management_java.rest.dto;
 
-import com.vvvxdd.project_management_java.config.ProjectStatus;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 
