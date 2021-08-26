@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface TasksRepository  extends JpaRepository<TaskEntity, Long> {
+public interface TasksRepository extends JpaRepository<TaskEntity, Long> {
     Optional<List<TaskEntity>> findAllByTaskId(Long taskId);
 
     Optional<List<TaskEntity>> findAllByReleaseId(Long releaseId);
@@ -22,7 +22,11 @@ public interface TasksRepository  extends JpaRepository<TaskEntity, Long> {
 
     Optional<List<TaskEntity>> findAllByStatus(TaskStatus status);
 
-    Optional<List<TaskEntity>> findAllByReleaseIdAndExecutorIdAndStatus(
-            Long releaseId, Long executorId, TaskStatus status
+    Optional<List<TaskEntity>> findAllByReleaseIdAndStatus(
+            Long releaseId, TaskStatus status
+    );
+    Integer countAllByReleaseIdAndStatusIsNot(
+            Long releaseId,
+            TaskStatus status
     );
 }

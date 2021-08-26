@@ -16,6 +16,9 @@ public class ReleasesRequestDto {
     @Schema(description = "Конец релизы")
     private Date completionTime;
 
+    @Schema(description = "Статус релиза")
+    private ReleaseStatus status;
+
     public long getReleaseId() {
         return releaseId;
     }
@@ -40,9 +43,21 @@ public class ReleasesRequestDto {
         this.completionTime = completionTime;
     }
 
-    public ReleasesRequestDto(long releaseId, Date startTime, Date completionTime) {
+    public ReleaseStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ReleaseStatus status) {
+        this.status = status;
+    }
+
+    public ReleasesRequestDto() {
+    }
+
+    public ReleasesRequestDto(long releaseId, Date startTime, Date completionTime, ReleaseStatus status) {
         this.releaseId = releaseId;
         this.startTime = startTime;
         this.completionTime = completionTime;
+        this.status = status;
     }
 }
