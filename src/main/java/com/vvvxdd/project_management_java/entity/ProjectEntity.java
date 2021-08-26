@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Table(name = "projects")
 public class ProjectEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // автогенерация значений ключа
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "project_id")
     private long projectId;
 
@@ -15,7 +15,7 @@ public class ProjectEntity {
     private String projectName;
 
     @Column(name = "project_status")
-    @Enumerated(EnumType.STRING) //принимает параметр типа EnumType
+    @Enumerated(EnumType.STRING)
     private ProjectStatus status;
 
     public ProjectEntity() {

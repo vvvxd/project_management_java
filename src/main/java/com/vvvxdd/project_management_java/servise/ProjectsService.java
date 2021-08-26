@@ -5,19 +5,49 @@ import com.vvvxdd.project_management_java.rest.dto.ProjectsResponseDto;
 
 import java.util.List;
 
-public interface ProjectsService extends StandardService<ProjectsRequestDto, ProjectsResponseDto,Long> {
+/**
+ * Сервис для работы с проектами
+ */
+public interface ProjectsService extends StandardService<ProjectsRequestDto, ProjectsResponseDto, Long> {
+    /**
+     * Метод получения проекта по его ID
+     *
+     * @param id - первичный ключ для проекта
+     * @return Projects Response Dto
+     */
     @Override
     ProjectsResponseDto getById(Long id);
-
+    /**
+     * Метод получения проектов
+     *
+     * @return List Projects Response Dto
+     */
     @Override
     List<ProjectsResponseDto> getAll();
 
+    /**
+     * Метод создания проекта
+     *
+     * @param projectsRequestDto - DTO проекта с заполненными полями без ID
+     * @return - ID проекта
+     */
     @Override
-    ProjectsResponseDto save(ProjectsRequestDto s);
+    Long save(ProjectsRequestDto projectsRequestDto);
 
+    /**
+     * Метод обновления проекта.
+     *
+     * @param id - первичный ключ для проекта
+     * @param projectsRequestDto  - DTO проекта с полями для измениний
+     */
     @Override
-    ProjectsResponseDto update(ProjectsRequestDto s, Long id);
+    void update(ProjectsRequestDto projectsRequestDto, Long id);
 
+    /**
+     * Метод удаления проекта
+     *
+     * @param id - первичный ключ для проекта
+     */
     @Override
-    ProjectsResponseDto deleteById(Long id);
+    void deleteById(Long id);
 }

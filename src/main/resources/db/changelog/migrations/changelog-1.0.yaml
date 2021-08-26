@@ -129,6 +129,9 @@ databaseChangeLog:
                     nullable: false
                   name: completion_time
                   type: date
+              - column:
+                 name: release_status
+                 type: VARCHAR
             tableName: releases
   - changeSet:
       id: 1628272996198-7

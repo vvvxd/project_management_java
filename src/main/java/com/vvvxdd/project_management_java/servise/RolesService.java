@@ -4,20 +4,46 @@ import com.vvvxdd.project_management_java.rest.dto.RolesRequestDto;
 import com.vvvxdd.project_management_java.rest.dto.RolesResponseDto;
 
 import java.util.List;
-
+/**
+ * Сервис для работы с ролями
+ */
 public interface RolesService extends StandardService<RolesRequestDto, RolesResponseDto,Long>{
+    /**
+     * Метод получения роли по ID
+     *
+     * @param id - ID роли
+     * @return - Roles Response Dto
+     */
     @Override
-    RolesResponseDto getById(Long aLong);
-
+    RolesResponseDto getById(Long id);
+    /**
+     * Метод получения ролей
+     *
+     * @return List Roles Response Dto
+     */
     @Override
     List<RolesResponseDto> getAll();
-
+    /**
+     * Метод создания роли
+     *
+     * @param rolesRequestDto - DTO роли с заполненными полями без ID
+     * @return - ID роли
+     */
     @Override
-    RolesResponseDto save(RolesRequestDto s);
-
+    Long save(RolesRequestDto rolesRequestDto);
+    /**
+     * Метод обновления роли.
+     *
+     * @param id - первичный ключ для роли
+     * @param rolesRequestDto  - DTO роли с полями для измениний
+     */
     @Override
-    RolesResponseDto update(RolesRequestDto s, Long e);
-
+    void update(RolesRequestDto rolesRequestDto, Long id);
+    /**
+     * Метод удаления роли
+     *
+     * @param id - первичный ключ для роли
+     */
     @Override
-    RolesResponseDto deleteById(Long aLong);
+    void deleteById(Long id);
 }

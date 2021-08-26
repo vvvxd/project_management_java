@@ -1,5 +1,8 @@
 package com.vvvxdd.project_management_java.entity;
 
+import com.vvvxdd.project_management_java.rest.dto.ProjectStatus;
+import com.vvvxdd.project_management_java.rest.dto.ReleaseStatus;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -17,14 +20,27 @@ public class ReleaseEntity {
     @Column(name = "completion_time")
     private Date completionTime;
 
+    @Column(name = "release_status")
+    @Enumerated(EnumType.STRING)
+    private ReleaseStatus status;
+
     public ReleaseEntity() {
 
     }
 
-    public ReleaseEntity(long releaseId, Date startTime, Date completionTime) {
+    public ReleaseStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(ReleaseStatus status) {
+        this.status = status;
+    }
+
+    public ReleaseEntity(long releaseId, Date startTime, Date completionTime, ReleaseStatus status) {
         this.releaseId = releaseId;
         this.startTime = startTime;
         this.completionTime = completionTime;
+        this.status = status;
     }
 
     public long getReleaseId() {
